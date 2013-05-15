@@ -8,9 +8,7 @@ class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
   class ActionDispatch::IntegrationTest
-    # make routes available in integration tests
     include Rails.application.routes.url_helpers
-    # Make the Capybara DSL available in all integration tests
     include Capybara::DSL
   end
   # Add more helper methods to be used by all tests here...

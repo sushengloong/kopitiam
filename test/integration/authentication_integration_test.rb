@@ -18,4 +18,16 @@ class AuthenticationIntegrationTest < ActionDispatch::IntegrationTest
     assert page.has_content?(@user1.email)
     assert page.has_content?('Logout')
   end
+
+  test 'user logs out successfully' do
+    visit root_path
+    fill_in 'Email', with: @user1.email
+    fill_in 'Password', with: @user1.password
+    click_button 'Login'
+    click_link 'Logout'
+
+    refute page.has_content?(@user1.email)
+    refute page.has_content?('Logout')
+  end
+    
 end
