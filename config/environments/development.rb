@@ -24,4 +24,7 @@ Kopitiam::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+
+  # required by devise
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
