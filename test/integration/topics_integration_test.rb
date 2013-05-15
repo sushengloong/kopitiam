@@ -22,7 +22,7 @@ class TopicsIntegrationTest < ActionDispatch::IntegrationTest
     visit root_path
     refute page.has_content?(topic.title)
     
-    click_link 'Start A Topic'
+    click_link 'Start New Topic'
     fill_in 'Title', with: topic.title
     fill_in 'Text', with: topic.text
     fill_in 'Link', with: topic.link
