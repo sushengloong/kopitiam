@@ -57,10 +57,10 @@
     <div class="row-fluid">
       <div class="span9">
         <% if notice.present? %>
-          <p class="notice"><%= notice %></p>
+          <div class="alert alert-success"><%= notice %></div>
         <% end %>
         <% if alert.present? %>
-          <p class="alert"><%= alert %></p>
+          <div class="alert alert-error"><%= alert %></div>
         <% end %>
         <%= yield %>
       </div>
