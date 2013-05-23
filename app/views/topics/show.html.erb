@@ -1,2 +1,13 @@
 <%= render @topic %>
-<p><%= @topic.text %></p>
+<% if @topic.text.present? %>
+  <p><%= @topic.text %></p>
+<% end %>
+<% if @topic.link.present? %>
+  <div class="link-iframe-ctn">
+    <div id="topic-btn-ctn">
+      <button id="toggle-preview" class="btn">Toggle Preview</button>
+      <%= link_to "Visit Link", @topic.link, id: 'topic-link-btn', class: 'btn btn-primary' %>
+    </div>
+    <iframe id="preview-iframe" width="800" height="400" src="<%= @topic.link %>"></iframe>
+  </div>
+<% end %>

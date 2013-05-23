@@ -3,3 +3,13 @@ span.topic-domain-name {
   font-size: 12px;
   font-weight: lighter;
 }
+
+div.link-iframe-ctn {
+  width: 800px;
+  height: 400px;
+
+  div#topic-btn-ctn {
+    float: right;
+    margin-bottom: 8px;
+  }
+}
