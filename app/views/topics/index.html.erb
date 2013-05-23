@@ -1,45 +1,12 @@
-<% if user_signed_in? %>
-  <%= current_user.email %>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    
-<% else %>
-  <%= form_for("user", :url => user_session_path) do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit 'Login' %>
-    <%= link_to "Forgot your password?", new_password_path('user') %>
-  <% end %>
-<% end %>
+<div class="row-fluid">
+  <div class="span12">
+    <%= render(@topics) || "No topics available" %>
+  </div><!--/span-->
+</div><!--/row-->
 
-<h1>Listing topics</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th>Link</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @topics.each do |topic| %>
-    <tr>
-      <td><%= topic.title %></td>
-      <td><%= topic.text %></td>
-      <td><%= topic.link %></td>
-      <td><%= link_to 'Show', topic %></td>
-      <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-      <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br />
-
-<%= link_to 'Start New Topic', new_topic_path %>
+<%# <%= topic.title %>
+<%# <%= topic.text %>
+<%# <%= topic.link %>
+<%# <%= link_to 'Show', topic %>
+<%# <%= link_to 'Edit', edit_topic_path(topic) %>
+<%# <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
