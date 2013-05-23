@@ -37,12 +37,12 @@
           </ul>
           <% if user_signed_in? %>
             <ul class="nav pull-right">
-              <li><%= link_to current_user.email, '#' %></li>
+              <li><%= link_to current_user.username, '#' %></li>
               <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn') %>
             </ul>
           <% else %>
             <%= form_for("user", url: user_session_path, html: { class: "navbar-form pull-right" }) do |f| %>
-              <%= f.text_field :email, placeholder: 'email', class: 'input-small' %>
+              <%= f.text_field :login, placeholder: 'username or email', class: 'input-small' %>
               <%= f.password_field :password, placeholder: 'password', class: 'input-small' %>
               <%= f.submit 'login', class: 'btn btn-primary' %>
               <%= link_to "recover password", new_password_path('user'), class: "btn" %>
