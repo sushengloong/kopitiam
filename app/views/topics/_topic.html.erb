@@ -1,7 +1,12 @@
 <div class="media">
   <a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x64" alt="avatar" /></a>
   <div class="media-body">
-    <h4 class="media-heading"><%= link_to topic.title, topic %></h4>
+    <h4 class="media-heading">
+      <%= link_to topic.title, topic %>
+      <% if topic.link_domain_name.present? %>
+        <span class="topic-domain-name">(<%= topic.link_domain_name %>)</span>
+      <% end %>
+    </h4>
     <%= topic.user.email %> posted <%= time_ago_in_words topic.created_at %> ago
     <% if user_signed_in? && topic.user_id == current_user.id %>
       <%= link_to 'Edit', edit_topic_path(topic) %>
