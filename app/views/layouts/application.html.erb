@@ -36,8 +36,10 @@
             </li>
           </ul>
           <% if user_signed_in? %>
-            <%= current_user.email %>
-            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn') %>    
+            <ul class="nav pull-right">
+              <li><%= link_to current_user.email, '#' %></li>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn') %>
+            </ul>
           <% else %>
             <%= form_for("user", url: user_session_path, html: { class: "navbar-form pull-right" }) do |f| %>
               <%= f.text_field :email, placeholder: 'email', class: 'input-small' %>

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model (deprecated in rails 4)
   # attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  has_many :topics
 end
