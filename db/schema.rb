@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130524055024) do
+ActiveRecord::Schema.define(version: 20130524142625) do
 
   create_table "topics", force: true do |t|
     t.string   "title"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20130524055024) do
   end
 
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"
+
+  create_table "treats", force: true do |t|
+    t.string   "name"
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "treats", ["topic_id"], name: "index_treats_on_topic_id"
+  add_index "treats", ["user_id"], name: "index_treats_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

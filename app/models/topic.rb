@@ -4,7 +4,14 @@ class Topic < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :treats
+  has_many :treating_users, through: :treats, source: :user
+
   def link_domain_name
     link.blank? ? nil : URI.parse(link).host
+  end
+
+  def treat_score
+    treats.inject(0) { |sum, treat| sum + treat.value }
   end
 end

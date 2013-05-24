@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
   
   has_many :topics
+  has_many :treats
+  has_many :treated_topics, through: :treats, source: :topic
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
