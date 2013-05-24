@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require jquery.typewatch
+//= require image-picker
 //= require_tree .

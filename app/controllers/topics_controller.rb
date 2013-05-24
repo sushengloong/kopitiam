@@ -27,10 +27,17 @@ class TopicsController < ApplicationController
   def preview
     begin
       link_thumbnailer = LinkThumbnailer.generate(params[:link])
-    rescue URI::InvalidURIError
+    rescue URI::InvalidURIError, Net::HTTP::Persistent::Error
       link_thumbnailer = nil
     end
-    render json: (link_thumbnailer.blank? ? {} : link_thumbnailer.to_json)
+    link_thumbnailer = if link_thumbnailer.blank?
+                       {}
+                     else
+                       link_thumbnailer = link_thumbnailer.to_hash # it's easier to reassign values in hash
+                       link_thumbnailer["images"] = link_thumbnailer["images"].map { |image| image.source_url.to_s }
+                       link_thumbnailer.to_json
+                     end
+    render json: link_thumbnailer
   end
 
   # POST /topics
@@ -81,6 +88,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title, :text, :link)
+      params.require(:topic).permit(:title, :text, :link, :thumbnail)
     end
 end

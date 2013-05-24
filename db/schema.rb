@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20130524055024) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "thumbnail_url"
+    t.string   "thumbnail"
   end
 
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"
