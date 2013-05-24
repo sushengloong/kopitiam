@@ -7,7 +7,7 @@
         <span class="topic-domain-name">(<%= topic.link_domain_name %>)</span>
       <% end %>
     </h4>
-    <%= topic.user.email %> posted <%= time_ago_in_words topic.created_at %> ago
+    <%= topic.user.username %> posted <%= time_ago_in_words topic.created_at %> ago
     <% if user_signed_in? && topic.user_id == current_user.id %>
       <%= link_to 'Edit', edit_topic_path(topic) %>
     <% end %>
