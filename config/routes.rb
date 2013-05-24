@@ -1,6 +1,10 @@
 Kopitiam::Application.routes.draw do
   devise_for :users
-  resources :topics
+  resources :topics do
+    collection do
+      get :preview
+    end
+  end
 
   root to: 'topics#index'
 

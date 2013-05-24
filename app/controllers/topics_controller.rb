@@ -1,3 +1,5 @@
+require 'link_thumbnailer'
+
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
@@ -20,6 +22,15 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
+  end
+
+  def preview
+    begin
+      link_thumbnailer = LinkThumbnailer.generate(params[:link])
+    rescue URI::InvalidURIError
+      link_thumbnailer = nil
+    end
+    render json: (link_thumbnailer.blank? ? {} : link_thumbnailer.to_json)
   end
 
   # POST /topics
