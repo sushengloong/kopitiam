@@ -11,10 +11,12 @@ ready = ->
         $.ajax
           url: '/topics/preview?link=' + value
           success: (data, textStatus, jqXHR)->
-            if $.trim($('input#topic_title').val()) == ''
+            if !$.isEmptyObject(data) && $.trim($('input#topic_title').val()) == ''
               $('input#topic_title').val(data.title)
           error: (jqXHR, textStatus, errorThrown)->
             console.log errorThrown
+      else
+        console.log 'not a valid url'
     captureLength: 5
 
 $(document).ready(ready)
