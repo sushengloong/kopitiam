@@ -2,6 +2,17 @@ $topic_thumbnail_width: 64px;
 $topic_thumbnail_height: 64px;
 
 div.topic-media {
+  div.topic-treats-ctn {
+    display: inline-block; 
+    height: $topic_thumbnail_height;
+    text-align: center;
+    padding-top: 10px;
+
+    div.topic-treats {
+      font-weight: bold;
+      color: #c6c6c6;
+    }
+  }
   img.media-object {
     width: $topic_thumbnail_width;
     height: $topic_thumbnail_height;
