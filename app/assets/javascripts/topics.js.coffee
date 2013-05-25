@@ -3,12 +3,18 @@ isValidUrl = (url) ->
 
 ready = ->
   window.timeoutObj = null
+
+  # # populate treat popover content
+  # $("a.topic-treat-link").each (index) ->
+  #   el = $(this)
+  #   $.get el.data("poload"), (d) ->
+  #     el.attr 'data-content', d # for some reasons .data() doesn't update DOM
+
   $('a.topic-treat-link').popover
     offset: 10
     trigger: 'manual'
     html: true
-    content: 'TO BE CONTINUED...'
-    title: '<h5>Like it? Buy a drink to increase its Treat Score</h5>'
+    title: '<h5>Like it? Treat it a drink</h5>'
     template: '<div class="popover right" onmouseover="clearTimeout(window.timeoutObj); $(this).mouseleave(function() {$(this).hide(); });"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   .mouseenter (e)->
     $(this).popover 'show'
