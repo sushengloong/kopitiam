@@ -10,11 +10,26 @@ ready = ->
   #   $.get el.data("poload"), (d) ->
   #     el.attr 'data-content', d # for some reasons .data() doesn't update DOM
 
+  $(document).on 'click', 'a.create_treat_link', (e)->
+    e.preventDefault()
+    el = $(e.target)
+    popover = el.closest('div.popover')
+    popover.hide()
+    popover.prev('.topic-treat-link').hide()
+    $.ajax
+      url: el.attr 'href'
+      method: 'post'
+      success: (data, textStatus, jqXHR)->
+        if !$.isEmptyObject(data)
+          popover.siblings('.topic-treats').text(data["topic_treat_score"]) if data["topic_treat_score"]
+      error: (jqXHR, textStatus, errorThrown)->
+        console.log errorThrown
+
   $('a.topic-treat-link').popover
     offset: 10
     trigger: 'manual'
     html: true
-    title: '<h5>Like it? Treat it a drink</h5>'
+    title: '<h5>Like it? Treat a drink</h5>'
     template: '<div class="popover right" onmouseover="clearTimeout(window.timeoutObj); $(this).mouseleave(function() {$(this).hide(); });"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   .mouseenter (e)->
     $(this).popover 'show'
