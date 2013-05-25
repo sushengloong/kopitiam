@@ -5,7 +5,7 @@
       <%= link_to 'Treat', '#', class: 'topic-treat-link btn btn-mini btn-success',
         data: { content: "#{link_to 'Kopi', treats_path(topic_id: topic.id, name: Treat::TreatName::KOPI), class: 'create_treat_link'}" } %>
     <% else %>
-      <%= link_to 'Login', new_user_session_path, class: 'btn btn-mini btn-primary' %>
+      <%= link_to 'Treat', new_user_session_path, class: 'btn btn-mini btn-success' %>
     <% end %>
   </div>
   <a class="pull-left" href="#"><img class="media-object" src="<%= topic.thumbnail %>" alt="avatar" /></a>
