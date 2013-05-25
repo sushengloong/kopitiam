@@ -5,11 +5,11 @@ ready = ->
   window.timeoutObj = null
   $('a.topic-treat-link').popover
     offset: 10
-    placement: 'right'
     trigger: 'manual'
     html: true
-    content: 'hello world'
-    template: '<div class="popover" onmouseover="clearTimeout(window.timeoutObj); $(this).mouseleave(function() {$(this).hide(); });"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+    content: 'TO BE CONTINUED...'
+    title: 'Like it? Treat a drink!'
+    template: '<div class="popover right" onmouseover="clearTimeout(window.timeoutObj); $(this).mouseleave(function() {$(this).hide(); });"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   .mouseenter (e)->
     $(this).popover 'show'
   .mouseleave (e)->
