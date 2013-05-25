@@ -8,7 +8,7 @@ ready = ->
     trigger: 'manual'
     html: true
     content: 'TO BE CONTINUED...'
-    title: 'Like it? Treat a drink!'
+    title: '<h5>Like it? Buy a drink to increase its Treat Score</h5>'
     template: '<div class="popover right" onmouseover="clearTimeout(window.timeoutObj); $(this).mouseleave(function() {$(this).hide(); });"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   .mouseenter (e)->
     $(this).popover 'show'
@@ -16,7 +16,7 @@ ready = ->
     ref = $(this)
     window.timeoutObj = setTimeout ->
       ref.popover 'hide'
-    , 200
+    , 1000
 
   $('button#toggle-preview').click ->
     $('iframe#preview-iframe').toggle()

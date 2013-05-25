@@ -6,11 +6,18 @@ div.topic-media {
     display: inline-block; 
     height: $topic_thumbnail_height;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 8px;
 
     div.topic-treats {
+      font-size: 18px;
       font-weight: bold;
       color: #c6c6c6;
+      margin-bottom: 8px;
+    }
+
+    .popover {
+      max-width: 500px;
+      width: auto;
     }
   }
   img.media-object {
