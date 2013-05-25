@@ -2,6 +2,22 @@ isValidUrl = (url) ->
   /^(http|https|ftp):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(url)
 
 ready = ->
+  window.timeoutObj = null
+  $('a.topic-treat-link').popover
+    offset: 10
+    placement: 'right'
+    trigger: 'manual'
+    html: true
+    content: 'hello world'
+    template: '<div class="popover" onmouseover="clearTimeout(window.timeoutObj); $(this).mouseleave(function() {$(this).hide(); });"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+  .mouseenter (e)->
+    $(this).popover 'show'
+  .mouseleave (e)->
+    ref = $(this)
+    window.timeoutObj = setTimeout ->
+      ref.popover 'hide'
+    , 200
+
   $('button#toggle-preview').click ->
     $('iframe#preview-iframe').toggle()
 
