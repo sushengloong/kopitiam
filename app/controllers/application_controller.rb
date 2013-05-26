@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     user_signed_in? && current_user.id == user_id
   end
 
-  helper_method :is_current_user?
+  helper_method :is_current_user?, :top_contributors
 
   protected
 

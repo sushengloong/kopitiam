@@ -67,13 +67,20 @@
       <div class="span3">
         <div class="well sidebar-nav">
           <%= link_to 'Start New Topic', new_topic_path, class: 'btn btn-large btn-block btn-primary', type: 'button' %>
-          <ul class="nav nav-list">
-            <li class="nav-header">Sidebar</li>
-            <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
+          <div id="top-contributors-ctn">
+            <h4>Top Contributors</h4>
+            <ul id="top-contributors-list">
+              <% User.top_contributors.each do |contributor| %>
+                <li>
+                  <a href="<%= user_path(contributor) %>">
+                    <%= image_tag contributor.avatar_url(:thumb).to_s, class: 'user-avatar-mini' %>
+                    <%= contributor.username %>
+                    <span class="badge badge-warning"><%= contributor.topics.count %> topics</span>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div><!--/.well -->
       </div><!--/span-->
     </div>

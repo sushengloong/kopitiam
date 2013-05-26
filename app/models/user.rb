@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
+  def self.top_contributors limit = 10
+    all.sort_by{ |x| [-x.topics.size, -x.comments.size] }.first(limit)
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
