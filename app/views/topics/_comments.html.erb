@@ -1,0 +1,10 @@
+<h4>Comments</h4>
+<% if user_signed_in? %>
+  <%= render partial: 'comments/form', locals: { comment: @comment } %>
+<% else %>
+  <%= link_to "login to comment", new_user_session_path %>
+<% end %>
+
+<div id="topic-comments">
+  <%= render(@topic.comments.reject(&:new_record?)) || 'No comments yet. Be the cool person to comment first!' %>
+</div>

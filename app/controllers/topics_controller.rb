@@ -13,6 +13,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @comment = current_user ? @topic.comments.new(user: current_user) : nil
   end
 
   # GET /topics/new

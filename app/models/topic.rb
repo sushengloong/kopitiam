@@ -6,6 +6,7 @@ class Topic < ActiveRecord::Base
 
   has_many :treats
   has_many :treating_users, through: :treats, source: :user
+  has_many :comments
 
   def link_domain_name
     link.blank? ? nil : URI.parse(link).host

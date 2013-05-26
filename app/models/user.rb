@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :treats
   has_many :treated_topics, through: :treats, source: :topic
+  has_many :comments
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

@@ -1,11 +1,13 @@
 Kopitiam::Application.routes.draw do
-  get "treats/create"
   devise_for :users
+
   resources :topics do
     collection do
       get :preview
     end
   end
+
+  resources :comments
 
   resources :treats
 

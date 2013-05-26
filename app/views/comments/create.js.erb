@@ -1,0 +1,6 @@
+<% if @comment.errors.any? %>
+  $('div#error_explanation').addClass('alert alert-error').text('<%= raw escape_javascript(@comment.errors.full_messages.first) %>')
+<% else %>
+  $('div#error_explanation').removeClass('alert alert-error').text('');
+  $('div#topic-comments').append('<%= escape_javascript(render(@comment)) %>');
+<% end %>
