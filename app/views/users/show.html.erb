@@ -1,0 +1,9 @@
+<div class="span8 well">
+  <div class="span2">
+    <%= image_tag "http://placehold.it/64x64" %>
+  </div>
+  <div class="span6">
+    <p><strong><%= @user.username%></strong></p>
+    <span class="badge badge-warning"><%= @user.topics.count %> topics</span> <span class=" badge badge-info"><%= @user.comments.count %> comments</span>
+  </div>
+</div>

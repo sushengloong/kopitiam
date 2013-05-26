@@ -1,9 +1,9 @@
 <div class="topic-comment media">
-  <a class="pull-left" href="#">
+  <a class="pull-left" href="<%= user_path comment.user %>">
     <img class="media-object" src="http://placehold.it/64x64" alt="<%= comment.user.username %> avatar">
   </a>
   <div class="media-body">
-    <h4 class="media-heading"><%= comment.user.username %> commented <%= time_ago_in_words(comment.created_at) %> ago</h4>
+    <h4 class="media-heading"><%= link_to comment.user.username, comment.user %> commented <%= time_ago_in_words(comment.created_at) %> ago</h4>
     <div class="media">
       <%= comment.content %>
     </div>

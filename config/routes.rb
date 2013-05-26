@@ -1,6 +1,8 @@
 Kopitiam::Application.routes.draw do
   devise_for :users
 
+  resources :users
+
   resources :topics do
     collection do
       get :preview
