@@ -48,7 +48,7 @@ ready = ->
     callback: (value)->
       if isValidUrl(value)
         $.ajax
-          url: '/topics/preview?link=' + value
+          url: '/topics/preview?link=' + encodeURIComponent(value)
           success: (data, textStatus, jqXHR)->
             if !$.isEmptyObject(data) && $.trim($('input#topic_title').val()) == ''
               $('input#topic_title').val(data.title)
