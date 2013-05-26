@@ -7,7 +7,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @popular_topics = Topic.popular
+    @fresh_topics = Topic.fresh
   end
 
   # GET /topics/1
@@ -35,7 +36,7 @@ class TopicsController < ApplicationController
                        {}
                      else
                        link_thumbnailer = link_thumbnailer.to_hash # it's easier to reassign values in hash
-                       link_thumbnailer["images"] = link_thumbnailer["images"].map { |image| image.source_url.to_s }
+                       link_thumbnailer["images"] = link_thumbnailer["images"].map { |image| image[:source_url].to_s }
                        link_thumbnailer.to_json
                      end
     render json: link_thumbnailer

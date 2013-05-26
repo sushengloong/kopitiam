@@ -1,12 +1,14 @@
-<div class="row-fluid">
-  <div class="span9">
-    <%= render(@topics) || "No topics available" %>
-  </div><!--/span-->
-</div><!--/row-->
-
-<%# <%= topic.title %>
-<%# <%= topic.text %>
-<%# <%= topic.link %>
-<%# <%= link_to 'Show', topic %>
-<%# <%= link_to 'Edit', edit_topic_path(topic) %>
-<%# <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div id="topic-tabs-ctn">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#popular" data-toggle="tab">Popular</a></li>
+    <li><a href="#fresh" data-toggle="tab">Fresh</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="popular">
+      <%= render(@popular_topics) || "No topics available" %>
+    </div>
+    <div class="tab-pane" id="fresh">
+      <%= render(@fresh_topics) || "No topics available" %>
+    </div>
+  </div>
+</div>
