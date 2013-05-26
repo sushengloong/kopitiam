@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  def is_current_user? user
+    user_id = user.is_a?(User) ? user.id : user
+    user_signed_in? && current_user.id == user_id
+  end
+
+  helper_method :is_current_user?
+
   protected
 
   def configure_permitted_parameters
