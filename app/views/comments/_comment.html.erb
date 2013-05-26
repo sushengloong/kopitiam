@@ -1,6 +1,6 @@
 <div class="topic-comment media">
   <a class="pull-left" href="<%= user_path comment.user %>">
-    <img class="media-object" src="http://placehold.it/64x64" alt="<%= comment.user.username %> avatar">
+    <%= image_tag comment.user.avatar_url(:thumb).to_s, alt: "#{comment.user.username} avatar", class: "media-object" %>
   </a>
   <div class="media-body">
     <h4 class="media-heading"><%= link_to comment.user.username, comment.user %> commented <%= time_ago_in_words(comment.created_at) %> ago</h4>

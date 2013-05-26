@@ -1,9 +1,16 @@
-<%= form_for(user, html: { class: 'form-horizontal' }) do |f| %>
+<%= form_for(user, html: { multipart: true, class: 'form-horizontal' }) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation" class="alert alert-error">
       <%= user.errors.full_messages.join('. ') %>
     </div>
   <% end %>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= image_tag user.avatar_url(:thumb).to_s %>
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
 
   <div class="control-group">
     <%= f.label :username, class: 'control-label' %>

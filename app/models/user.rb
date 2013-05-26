@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :treated_topics, through: :treats, source: :topic
   has_many :comments
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
