@@ -7,8 +7,18 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @popular_topics = Topic.popular.page(params[:page])
-    @fresh_topics = Topic.fresh.page(params[:page])
+    # TODO Duplicate code. Must refactor
+    if params[:tab].present?
+      @topics = case params[:tab]
+                when 'popular-topics'
+                  Topic.popular.page(params[:page])
+                when 'fresh-topics'
+                  Topic.fresh.page(params[:page])
+                end
+    else
+      @popular_topics = Topic.popular.page(params[:page])
+      @fresh_topics = Topic.fresh.page(params[:page])
+    end
   end
 
   # GET /topics/1

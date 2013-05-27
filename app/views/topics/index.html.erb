@@ -1,14 +1,14 @@
 <div id="topic-tabs-ctn">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#popular" data-toggle="tab">Popular</a></li>
-    <li><a href="#fresh" data-toggle="tab">Fresh</a></li>
+    <li class="active"><a href="#popular-topics" data-toggle="tab">Popular</a></li>
+    <li><a href="#fresh-topics" data-toggle="tab">Fresh</a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="popular">
+    <div class="tab-pane active" id="popular-topics">
       <%= render(@popular_topics) || "No topics available" %>
       <%= will_paginate @popular_topics %>
     </div>
-    <div class="tab-pane" id="fresh">
+    <div class="tab-pane" id="fresh-topics">
       <%= render(@fresh_topics) || "No topics available" %>
       <%= will_paginate @fresh_topics %>
     </div>
