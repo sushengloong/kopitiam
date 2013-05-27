@@ -3,13 +3,13 @@ isValidUrl = (url) ->
 
 ready = ->
 
-  if $('.pagination').length
-    $(window).scroll ->
+  $(window).scroll ->
+    if $('.pagination').length
       url = $('.pagination .next_page').attr('href') + '&tab=' + $('div#topic-tabs-ctn div.tab-pane.active').attr('id')
       if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
         $('.pagination').text("loading more topics...")
         $.getScript(url)
-    $(window).scroll()
+  $(window).scroll()
 
   window.timeoutObj = null
 
