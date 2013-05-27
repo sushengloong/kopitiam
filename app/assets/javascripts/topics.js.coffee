@@ -2,13 +2,16 @@ isValidUrl = (url) ->
   /^(http|https|ftp):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(url)
 
 ready = ->
-  window.timeoutObj = null
 
-  # # populate treat popover content
-  # $("a.topic-treat-link").each (index) ->
-  #   el = $(this)
-  #   $.get el.data("poload"), (d) ->
-  #     el.attr 'data-content', d # for some reasons .data() doesn't update DOM
+  if $('.pagination').length
+    $(window).scroll ->
+      url = $('.pagination .next_page').attr('href')
+      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+        $('.pagination').text("loading more topics...")
+        $.getScript(url)
+    $(window).scroll()
+
+  window.timeoutObj = null
 
   $(document).on 'click', 'a.create_treat_link', (e)->
     e.preventDefault()

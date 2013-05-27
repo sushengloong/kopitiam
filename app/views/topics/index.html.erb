@@ -6,9 +6,11 @@
   <div class="tab-content">
     <div class="tab-pane active" id="popular">
       <%= render(@popular_topics) || "No topics available" %>
+      <%= will_paginate @popular_topics %>
     </div>
     <div class="tab-pane" id="fresh">
       <%= render(@fresh_topics) || "No topics available" %>
+      <%= will_paginate @fresh_topics %>
     </div>
   </div>
 </div>

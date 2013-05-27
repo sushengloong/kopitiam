@@ -7,8 +7,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @popular_topics = Topic.popular
-    @fresh_topics = Topic.fresh
+    @popular_topics = Topic.popular.page(params[:page])
+    @fresh_topics = Topic.fresh.page(params[:page])
   end
 
   # GET /topics/1
