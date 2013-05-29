@@ -31,6 +31,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'link_thumbnailer', '~> 1.0.7'
 gem 'carrierwave', '~> 0.8.0'
 gem 'will_paginate', '~> 3.0.4'
+gem 'pg_search', '~> 0.6.4'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

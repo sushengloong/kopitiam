@@ -1,19 +1,19 @@
 <div id="topic-tabs-ctn">
   <ul class="nav nav-tabs">
-    <% if @search_topics.present? %>
+    <% if params[:q].present? %>
       <li class="active"><a href="#search-topics" data-toggle="tab">Search</a></li>
     <% end %>
-    <li class="<%= "active" if @search_topics.blank? %>"><a href="#popular-topics" data-toggle="tab">Popular</a></li>
+    <li class="<%= "active" if params[:q].blank? %>"><a href="#popular-topics" data-toggle="tab">Popular</a></li>
     <li><a href="#fresh-topics" data-toggle="tab">Fresh</a></li>
   </ul>
   <div class="tab-content">
-    <% if @search_topics.present? %>
+    <% if params[:q].present? %>
       <div class="tab-pane active" id="search-topics">
-        <%= render @search_topics %>
+        <%= render(@search_topics) || "No search returned" %>
         <%= will_paginate @search_topics %>
       </div>
     <% end %>
-    <div class="tab-pane <%= "active" if @search_topics.blank? %>" id="popular-topics">
+    <div class="tab-pane <%= "active" if params[:q].blank? %>" id="popular-topics">
       <%= render(@popular_topics) || "No topics available" %>
       <%= will_paginate @popular_topics %>
     </div>

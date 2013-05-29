@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  include PgSearch
+
   before_save :refresh_treat_score
 
   validates :title, presence: true
@@ -14,6 +16,9 @@ class Topic < ActiveRecord::Base
   scope :fresh, ->{ order('created_at desc') }
 
   self.per_page = 10
+
+  pg_search_scope :search, against: [:title, :link, :text],
+      using: {tsearch: {dictionary: "english"}}
 
   def link_domain_name
     link.blank? ? nil : URI.parse(link).host

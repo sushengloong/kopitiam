@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
                 end
     else
       if params[:q].present?
-        @search_topics = Topic.popular.page(params[:page])
+        @search_topics = Topic.search(params[:q]).page(params[:page])
       end
       @popular_topics = Topic.popular.page(params[:page])
       @fresh_topics = Topic.fresh.page(params[:page])
