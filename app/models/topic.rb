@@ -19,7 +19,8 @@ class Topic < ActiveRecord::Base
 
   pg_search_scope :search, against: [:title, :link, :text],
       using: {tsearch: {dictionary: "english"}},
-      associated_against: {user: :username, comments: [:content]}
+      associated_against: {user: :username, comments: [:content]},
+      ignoring: :accents
 
   def link_domain_name
     link.blank? ? nil : URI.parse(link).host
