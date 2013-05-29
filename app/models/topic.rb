@@ -18,7 +18,8 @@ class Topic < ActiveRecord::Base
   self.per_page = 10
 
   pg_search_scope :search, against: [:title, :link, :text],
-      using: {tsearch: {dictionary: "english"}}
+      using: {tsearch: {dictionary: "english"}},
+      associated_against: {user: :username, comments: [:content]}
 
   def link_domain_name
     link.blank? ? nil : URI.parse(link).host
