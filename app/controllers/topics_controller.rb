@@ -16,6 +16,9 @@ class TopicsController < ApplicationController
                   Topic.fresh.page(params[:page])
                 end
     else
+      if params[:q].present?
+        @search_topics = Topic.popular.page(params[:page])
+      end
       @popular_topics = Topic.popular.page(params[:page])
       @fresh_topics = Topic.fresh.page(params[:page])
     end

@@ -1,4 +1,10 @@
 <div class="well sidebar-nav">
+  <div id="search-form-ctn">
+    <%= form_tag topics_path, method: :get, id: "search-form", class: "form-search" do %>
+      <%= text_field_tag :q, params[:q], placeholder: "search here...", class: "input-medium search-query" %>
+      <%= submit_tag "Search", class: "btn" %>
+    <% end %>
+  </div>
   <%= link_to 'Start New Topic', new_topic_path, class: 'btn btn-large btn-block btn-primary', type: 'button' %>
   <div id="top-contributors-ctn">
     <h4>Top Contributors</h4>
