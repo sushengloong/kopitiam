@@ -1,7 +1,11 @@
 Kopitiam::Application.routes.draw do
   devise_for :users
 
-  resources :users
+  resources :users do
+    member do
+      post :update_password
+    end
+  end
 
   resources :topics do
     collection do
