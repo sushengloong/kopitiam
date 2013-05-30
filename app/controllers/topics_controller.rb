@@ -45,14 +45,19 @@ class TopicsController < ApplicationController
     rescue URI::InvalidURIError, Net::HTTP::Persistent::Error
       link_thumbnailer = nil
     end
-    link_thumbnailer = if link_thumbnailer.blank?
-                       {}
+    data = {}
+    if link_thumbnailer.present?
+      data[:title] = link_thumbnailer.title
+      data[:images] = link_thumbnailer.images.map do |image|
+        source_url = if image.is_a?(Hash)
+                       image[:source_url]
                      else
-                       link_thumbnailer = link_thumbnailer.to_hash # it's easier to reassign values in hash
-                       link_thumbnailer["images"] = link_thumbnailer["images"].map { |image| image[:source_url].to_s }
-                       link_thumbnailer.to_json
+                       image.source_url
                      end
-    render json: link_thumbnailer
+        source_url.to_s
+      end
+    end
+    render json: data.to_json
   end
 
   # POST /topics

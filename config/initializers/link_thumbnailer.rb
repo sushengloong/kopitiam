@@ -8,7 +8,7 @@ LinkThumbnailer.configure do |config|
   # config.strict = true
 
   # Numbers of redirects before raising an exception when trying to parse given url.
-  # config.redirect_limit = 3
+  config.redirect_limit = 3
 
   # List of blacklisted urls you want to skip when searching for images.
   config.blacklist_urls = [
