@@ -12,8 +12,8 @@ class Topic < ActiveRecord::Base
   has_many :treating_users, through: :treats, source: :user
   has_many :comments
 
-  scope :popular, ->{ order('treat_score desc') }
-  scope :fresh, ->{ order('created_at desc') }
+  scope :popular, ->{ includes(:user).order('treat_score desc') }
+  scope :fresh, ->{ includes(:user).order('created_at desc') }
 
   self.per_page = 10
 
