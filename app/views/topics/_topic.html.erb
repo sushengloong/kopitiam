@@ -20,5 +20,7 @@
     <% if user_signed_in? && topic.user_id == current_user.id %>
       <%= link_to 'Edit', edit_topic_path(topic) %>
     <% end %>
+    <br />
+    <%= link_to pluralize(topic.comments.size, 'comment'), topic_path(topic, anchor: 'comments') %>
   </div><!--/media-body-->
 </div><!--/media-->
