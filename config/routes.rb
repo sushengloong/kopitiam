@@ -17,6 +17,8 @@ Kopitiam::Application.routes.draw do
 
   resources :treats
 
+  resources :favorites
+
   root to: 'topics#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

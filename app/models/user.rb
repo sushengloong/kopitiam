@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :treats
   has_many :treated_topics, through: :treats, source: :topic
   has_many :comments
+  has_many :favorites
+  has_many :favorite_topics, through: :favorites, source: :topic
 
   mount_uploader :avatar, AvatarUploader
 
@@ -32,5 +34,9 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def has_favorited? topic
+    favorite_topics.any? { |t| t.id == topic.id }
   end
 end

@@ -11,6 +11,8 @@ class Topic < ActiveRecord::Base
   has_many :treats
   has_many :treating_users, through: :treats, source: :user
   has_many :comments
+  has_many :favorites
+  has_many :favorited_by, through: :favorites, source: :user
 
   scope :popular, ->{ includes(:user).order('treat_score desc') }
   scope :fresh, ->{ includes(:user).order('created_at desc') }

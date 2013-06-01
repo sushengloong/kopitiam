@@ -1,0 +1,5 @@
+<% if @favorite.errors.any? %>
+  alert(<%= @favorite.errors.full_messages.join('.') %>);
+<% else %>
+  $('a.favorite-link[data-topic-id="<%= @favorite.topic_id %>"]').text("done!");
+<% end %>

@@ -24,7 +24,17 @@
       <br />
       <ul class="flat-list">
         <li><%= link_to pluralize(topic.comments.size, 'comment'), topic_path(topic, anchor: 'comments') %></li>
-        <li><%= link_to 'favourite', '#' %></li>
+        <li>
+          <% if user_signed_in? %>
+            <% if current_user.has_favorited?(topic) %>
+              favourited!
+            <% else %>
+              <%= link_to ('favourite'), favorites_path(topic_id: topic.id), remote: true, method: :post, class: 'favorite-link', data: { topic_id: topic.id } %>
+            <% end %>
+          <% else %>
+            <%= link_to 'favourite', new_user_session_path %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div><!--/media-body-->
