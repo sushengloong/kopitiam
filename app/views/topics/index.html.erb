@@ -28,9 +28,11 @@
       <%= render(@fresh_topics) || "No topics available" %>
       <%= will_paginate @fresh_topics %>
     </div>
-    <div class="tab-pane" id="favorite-topics">
-      <%= render(@favorite_topics) || "No topics available" %>
-      <%= will_paginate @favorite_topics %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="tab-pane" id="favorite-topics">
+        <%= render(@favorite_topics) || "No topics available" %>
+        <%= will_paginate @favorite_topics %>
+      </div>
+    <% end %>
   </div>
 </div>
