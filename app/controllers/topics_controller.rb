@@ -21,6 +21,7 @@ class TopicsController < ApplicationController
       end
       @popular_topics = Topic.popular.page(params[:page])
       @fresh_topics = Topic.fresh.page(params[:page])
+      @favorite_topics = current_user.favorite_topics.page(params[:page]) if user_signed_in?
     end
   end
 

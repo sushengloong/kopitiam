@@ -5,6 +5,13 @@
     <% end %>
     <li class="<%= "active" if params[:q].blank? %>"><a href="#popular-topics" data-toggle="tab">Popular</a></li>
     <li><a href="#fresh-topics" data-toggle="tab">Fresh</a></li>
+    <li>
+      <% if user_signed_in? %>
+        <a href="#favorite-topics" data-toggle="tab">Favourites</a>
+      <% else %>
+        <a href="<%= new_user_session_path %>">Favourites</a>
+      <% end %>
+    </li>
   </ul>
   <div class="tab-content">
     <% if params[:q].present? %>
@@ -20,6 +27,10 @@
     <div class="tab-pane" id="fresh-topics">
       <%= render(@fresh_topics) || "No topics available" %>
       <%= will_paginate @fresh_topics %>
+    </div>
+    <div class="tab-pane" id="favorite-topics">
+      <%= render(@favorite_topics) || "No topics available" %>
+      <%= will_paginate @favorite_topics %>
     </div>
   </div>
 </div>
