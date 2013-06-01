@@ -2,4 +2,7 @@
   alert(<%= @favorite.errors.full_messages.join('.') %>);
 <% else %>
   $('a.favorite-link[data-topic-id="<%= @favorite.topic_id %>"]').text("done!");
+  if ($('div#favorite-topics div.topic-media').length == 0)
+    $('div#favorite-topics').text('');
+  $('div#favorite-topics').prepend("<%= j render(@favorite.topic) %>");
 <% end %>
