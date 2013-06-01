@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :treated_topics, through: :treats, source: :topic
   has_many :comments
   has_many :favorites
-  has_many :favorite_topics, through: :favorites, source: :topic
+  has_many :favorite_topics, through: :favorites, source: :topic, order: 'created_at desc'
 
   mount_uploader :avatar, AvatarUploader
 

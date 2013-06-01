@@ -21,6 +21,7 @@
   <ul class="nav nav-tabs">
     <li class="active"><a href="#topics" data-toggle="tab">Topics</a></li>
     <li><a href="#comments" data-toggle="tab">Comments</a></li>
+    <li><a href="#favorites" data-toggle="tab">Favourites</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="topics">
@@ -28,6 +29,9 @@
     </div>
     <div class="tab-pane" id="comments">
       <%= render(@user.comments) || "No comments added by #{@user.username}" %>
+    </div>
+    <div class="tab-pane" id="favorites">
+      <%= render(@user.favorite_topics) || "No comments favorited by #{@user.username}" %>
     </div>
   </div>
 </div>
