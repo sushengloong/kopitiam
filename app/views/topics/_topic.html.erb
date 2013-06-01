@@ -16,11 +16,16 @@
         <span class="topic-domain-name">(<%= topic.link_domain_name %>)</span>
       <% end %>
     </h4>
-    <%= link_to topic.user.username, topic.user %> posted <%= time_ago_in_words topic.created_at %> ago
-    <% if user_signed_in? && topic.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_topic_path(topic) %>
-    <% end %>
-    <br />
-    <%= link_to pluralize(topic.comments.size, 'comment'), topic_path(topic, anchor: 'comments') %>
+    <div class="media-content">
+      <%= link_to topic.user.username, topic.user %> posted <%= time_ago_in_words topic.created_at %> ago
+      <% if user_signed_in? && topic.user_id == current_user.id %>
+        <%= link_to 'Edit', edit_topic_path(topic) %>
+      <% end %>
+      <br />
+      <ul class="flat-list">
+        <li><%= link_to pluralize(topic.comments.size, 'comment'), topic_path(topic, anchor: 'comments') %></li>
+        <li><%= link_to 'favourite', '#' %></li>
+      </ul>
+    </div>
   </div><!--/media-body-->
 </div><!--/media-->
