@@ -17,6 +17,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'foreman', '~> 0.63.0'
+end
+
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 
