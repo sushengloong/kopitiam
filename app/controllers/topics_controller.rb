@@ -68,7 +68,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        track_activity @topic, 'start'
+        track_activity @topic, 'create'
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render action: 'show', status: :created, location: @topic }
       else
@@ -97,7 +97,7 @@ class TopicsController < ApplicationController
   # DELETE /topics/1.json
   def destroy
     @topic.destroy
-    track_activity @topic, 'delete'
+    track_activity @topic, 'destroy'
     respond_to do |format|
       format.html { redirect_to topics_url }
       format.json { head :no_content }

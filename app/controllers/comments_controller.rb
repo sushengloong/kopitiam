@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new comment_params
-    track_activity(@comment, 'add') if @comment.save
+    track_activity(@comment, 'create') if @comment.save
     render 'create.js'
   end
 
