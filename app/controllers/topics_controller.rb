@@ -68,6 +68,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        track_activity @topic, 'start'
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render action: 'show', status: :created, location: @topic }
       else
@@ -82,6 +83,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
+        track_activity @topic, 'update'
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
         format.json { head :no_content }
       else
@@ -95,6 +97,7 @@ class TopicsController < ApplicationController
   # DELETE /topics/1.json
   def destroy
     @topic.destroy
+    track_activity @topic, 'delete'
     respond_to do |format|
       format.html { redirect_to topics_url }
       format.json { head :no_content }

@@ -47,4 +47,4 @@ gem 'pg_search', '~> 0.6.4'
 # gem 'capistrano', group: :development
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

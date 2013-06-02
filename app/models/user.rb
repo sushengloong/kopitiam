@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favorites
   has_many :favorite_topics, through: :favorites, source: :topic, order: 'created_at desc'
+  has_many :activities
 
   mount_uploader :avatar, AvatarUploader
 

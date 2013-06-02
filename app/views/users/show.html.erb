@@ -19,13 +19,17 @@
 
 <div id="user-contributions">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#topics" data-toggle="tab">Topics</a></li>
+    <li class="active"><a href="#activities" data-toggle="tab">Activities</a></li>
+    <li><a href="#topics" data-toggle="tab">Topics</a></li>
     <li><a href="#comments" data-toggle="tab">Comments</a></li>
     <li><a href="#favorites" data-toggle="tab">Favourites</a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="topics">
-      <%= render(@user.topics) || "No topics added by #{@user.username}" %>
+    <div class="tab-pane active" id="activities">
+      <%= render(@user.activities) || "No activities performed by #{@user.username}" %>
+    </div>
+    <div class="tab-pane" id="topics">
+      <%= render(@user.topics) || "No topics started by #{@user.username}" %>
     </div>
     <div class="tab-pane" id="comments">
       <%= render(@user.comments) || "No comments added by #{@user.username}" %>

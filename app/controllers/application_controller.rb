@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email) }
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
   end
+
+  def track_activity trackable, action = params[:action]
+    current_user.activities.create! action: action, trackable: trackable
+  end
 end
