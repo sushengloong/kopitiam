@@ -1,0 +1,11 @@
+<%= div_for activity, class: 'media' do %>
+  <a class="pull-left" href="<%= user_path activity.user %>">
+    <%= image_tag activity.user.avatar_url(:thumb).to_s, alt: "#{activity.user.username} avatar", class: "media-object" %>
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><%= link_to activity.user.username, activity.user %></h4>
+    <div class="media">
+      <%= yield %> <%= time_ago_in_words(activity.created_at) %> ago
+    </div>
+  </div>
+<% end %>

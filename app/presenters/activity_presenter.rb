@@ -5,15 +5,13 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def render_activity
-    div_for @activity do
-      link_to(@activity.user.username, @activity.user) + " " + render_partial
-    end
+    render_partial
   end
 
   def render_partial
     locals = { activity: @activity, presenter: self }
     locals[@activity.trackable_type.underscore.to_sym] = @activity.trackable
-    render partial_path, locals
+    render partial: partial_path, layout: 'activities/activity_layout', locals: locals
   end
 
   def partial_path
