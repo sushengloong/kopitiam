@@ -52,12 +52,15 @@ ready = ->
       if isValidUrl(value)
         $.ajax
           url: '/topics/preview?link=' + encodeURIComponent(value)
+          beforeSend: ->
+            $("img#topic-link-loading").show()
           success: (data, textStatus, jqXHR)->
             if !$.isEmptyObject(data) && $.trim($('input#topic_title').val()) == ''
               $('input#topic_title').val(data.title)
               $.each data.images, (i, e)->
                 $('select#topic_thumbnail').append('<option data-img-src="' + e + '" value="' + e + '"></option>')
                 $('select#topic_thumbnail').imagepicker() # refresh image picker
+            $("img#topic-link-loading").hide()
           error: (jqXHR, textStatus, errorThrown)->
             console.log errorThrown
       else
