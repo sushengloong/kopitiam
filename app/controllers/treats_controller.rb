@@ -8,6 +8,7 @@ class TreatsController < ApplicationController
   def create
     treat = Treat.create topic_id: params[:topic_id], name: params[:name], value: 1, user_id: current_user.id
     topic = Topic.find treat.topic_id
+    track_activity treat, 'create'
     render json: { status: :ok, topic_treat_score: topic.treat_score }.to_json
   end
 end
