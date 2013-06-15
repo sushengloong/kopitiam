@@ -16,4 +16,6 @@
 /tmp
 .DS_Store
 
+.vagrant
+
 /public/uploads
