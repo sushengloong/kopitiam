@@ -43,7 +43,7 @@ ready = ->
     , 1000
 
   $('button#toggle-preview').click ->
-    $('iframe#preview-iframe').toggle()
+    $('div#preview-iframe-ctn').toggle()
 
   $('select#topic_thumbnail').imagepicker()
 

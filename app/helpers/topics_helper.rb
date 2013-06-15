@@ -11,7 +11,7 @@ module TopicsHelper
     if youtube_id.blank?
       nil
     else
-      %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{youtube_id}" frameborder="0" allowfullscreen></iframe>}.html_safe
+      %Q{<iframe id="preview-iframe" title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{youtube_id}" frameborder="0" allowfullscreen></iframe>}.html_safe
     end
   end
 

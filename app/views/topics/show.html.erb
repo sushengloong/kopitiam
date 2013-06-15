@@ -8,7 +8,9 @@
       <button id="toggle-preview" class="btn">Toggle Preview</button>
       <%= link_to "Visit Link", @topic.link, id: 'topic-link-btn', class: 'btn btn-primary' %>
     </div>
-    <%= preview_iframe @topic.link %>
+    <div id="preview-iframe-ctn">
+      <%= preview_iframe @topic.link %>
+    </div>
   </div>
 <% end %>
 
