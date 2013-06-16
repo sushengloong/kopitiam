@@ -8,8 +8,8 @@ gem 'pg', '~> 0.15.1'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'sass-rails',   '~> 4.0.0.rc2'
+  gem 'coffee-rails', '~> 4.0.0.rc2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
@@ -32,10 +32,15 @@ gem 'jbuilder', '~> 1.0.1'
 
 gem 'capybara'
 gem 'devise', '~> 3.0.0.rc'
-gem 'link_thumbnailer', '~> 1.0.7'
+gem 'link_thumbnailer', '~> 1.0.8', git: 'https://github.com/sushengloong/link_thumbnailer.git'
 gem 'carrierwave', '~> 0.8.0'
 gem 'will_paginate', '~> 3.0.4'
 gem 'pg_search', '~> 0.6.4'
+
+# Server provisioning
+gem 'chef', '~> 11.4.4'
+gem 'knife-solo', '~> 0.2.0'
+gem 'berkshelf', '~> 2.0.3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
